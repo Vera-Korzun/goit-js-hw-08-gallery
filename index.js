@@ -1,5 +1,5 @@
-import galleryItems from "./gallery-items.js";
-import refs from "./refs.js";
+import galleryItems from "./src/gallery-items.js";
+import refs from "./src/refs.js";
 
 refs.getUl.addEventListener('click', openModal);
 
