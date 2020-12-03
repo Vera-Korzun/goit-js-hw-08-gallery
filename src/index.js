@@ -1,12 +1,7 @@
 import galleryItems from "./gallery-items.js";
+import refs from "./refs.js";
 
-const getUl = document.querySelector('.gallery');
-const modal = document.querySelector('.lightbox');
-const overlay = document.querySelector('.lightbox__overlay');
-const imageModal = document.querySelector('.lightbox__image');
-const closeModalButton = document.querySelector('button[data-action="close-lightbox"]');
-
-getUl.addEventListener('click', openModal);
+refs.getUl.addEventListener('click', openModal);
 
 const createLi=function ({ original, preview, description }) {
     let itemLi=document.createElement('li');
@@ -24,27 +19,26 @@ const createLi=function ({ original, preview, description }) {
 
     itemA.append(itemImg);
     itemLi.append(itemA);
-    getUl.append(itemLi);
+    refs.getUl.append(itemLi);
 }
     
     galleryItems.forEach(createLi)
-    //console.log(getUl);
-
+    
 function openModal(event) {
     event.preventDefault();
     if(event.target.nodeName !== 'IMG') {
         return;
     }
 
-    modal.classList.add('is-open');
-    imageModal.src = event.target.dataset.source;
-    imageModal.alt = event.target.alt;
+    refs.modal.classList.add('is-open');
+    refs.imageModal.src = event.target.dataset.source;
+    refs.imageModal.alt = event.target.alt;
 
-    closeModalButton.addEventListener('click', closeModal);
-    overlay.addEventListener('click', closeModal);
+    refs.closeModalButton.addEventListener('click', closeModal);
+    refs.overlay.addEventListener('click', closeModal);
 };
 
 function closeModal() {
-    modal.classList.remove('is-open');
-    imageModal.src='';
+    refs.modal.classList.remove('is-open');
+    refs.imageModal.src='';
 };
