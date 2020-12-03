@@ -41,4 +41,7 @@ function openModal(event) {
 function closeModal() {
     refs.modal.classList.remove('is-open');
     refs.imageModal.src='';
+
+    refs.closeModalButton.removeEventListener('click', closeModal);
+    refs.overlay.removeEventListener('click', closeModal);
 };
